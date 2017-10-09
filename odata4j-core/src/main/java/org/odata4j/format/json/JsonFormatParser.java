@@ -254,6 +254,8 @@ public class JsonFormatParser {
       ensureNext(jsr);
       event = jsr.nextEvent();
 
+      if(!event.isEndArray())
+      {
       if (event.isValue()) {
         throw new IllegalArgumentException("arrays of primitive types not supported! property " + entry.getEntityType().getName() + "." + name);
       } else if (event.isStartObject()) {
@@ -269,7 +271,7 @@ public class JsonFormatParser {
       } else {
         throw new IllegalArgumentException("What's that?");
       }
-
+      }
       ensureEndProperty(jsr.nextEvent());
     }
     return ees;

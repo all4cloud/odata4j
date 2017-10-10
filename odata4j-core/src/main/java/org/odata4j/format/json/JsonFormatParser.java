@@ -256,21 +256,24 @@ public class JsonFormatParser {
 
       if(!event.isEndArray())
       {
-      if (event.isValue()) {
-        throw new IllegalArgumentException("arrays of primitive types not supported! property " + entry.getEntityType().getName() + "." + name);
-      } else if (event.isStartObject()) {
-        EdmNavigationProperty navProp = entry.getEntityType().findNavigationProperty(name);
-        ees = metadata.getEdmEntitySet(navProp.getToRole().getType());
-        List<OEntity> entities = new ArrayList<OEntity>();
-        do {
-          entities.add(parseEntry(ees, jsr).getEntity());
-          event = jsr.nextEvent();
-        } while (!event.isEndArray());
-        entry.links.add(OLinks.relatedEntitiesInline(name, name, entry.getUri() + "/" + name,
-            entities));
-      } else {
-        throw new IllegalArgumentException("What's that?");
-      }
+	      if (event.isValue()) {
+	        throw new IllegalArgumentException("arrays of primitive types not supported! property " + entry.getEntityType().getName() + "." + name);
+	      } else if (event.isStartObject()) {
+	        EdmNavigationProperty navProp = entry.getEntityType().findNavigationProperty(name);
+	        ees = metadata.getEdmEntitySet(navProp.getToRole().getType());
+	        List<OEntity> entities = new ArrayList<OEntity>();
+	        do {
+	          entities.add(parseEntry(ees, jsr).getEntity());
+	          event = jsr.nextEvent();
+	        } while (!event.isEndArray());
+	        entry.links.add(OLinks.relatedEntitiesInline(name, name, entry.getUri() + "/" + name,
+	            entities));
+	      } else {
+	        throw new IllegalArgumentException("What's that?");
+	      }
+      }else{
+    	  entry.links.add(OLinks.relatedEntitiesInline(name, name, entry.getUri() + "/" + name,
+    			  new ArrayList<OEntity>()));
       }
       ensureEndProperty(jsr.nextEvent());
     }

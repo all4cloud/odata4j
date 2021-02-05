@@ -7,7 +7,7 @@ public class OAuthAuthenticationBehavior implements OClientBehavior {
 
   private final String oAuthToken;
 
-  public OAuthTokenAuthenticationBehavior(String oAuthToken) {
+  public OAuthAuthenticationBehavior(String oAuthToken) {
     this.oAuthToken = oAuthToken;
   }
 

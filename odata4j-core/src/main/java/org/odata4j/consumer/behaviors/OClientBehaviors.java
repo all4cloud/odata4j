@@ -61,5 +61,15 @@ public class OClientBehaviors {
       }
     };
   }
+  
+  /**
+   * Creates a behavior that does token authorization.
+   *
+   * @param OAuth Token
+   * @return a behavior that does http basic authentication
+   */
+  public static OClientBehavior oAuthBehavior(String oAuthToken) {
+    return new OAuthAuthenticationBehavior(oAuthToken);
+  }
 
 }

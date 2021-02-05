@@ -20,6 +20,17 @@ public class OClientBehaviors {
   public static OClientBehavior basicAuth(String user, String password) {
     return new BasicAuthenticationBehavior(user, password);
   }
+  
+    
+  /**
+   * Creates a behavior that does token authorization.
+   *
+   * @param OAuth Token
+   * @return a behavior that does http basic authentication
+   */
+  public static OClientBehavior oAuthBehavior(String oAuthToken) {
+    return new OAuthAuthenticationBehavior(oAuthToken);
+  }
 
   /**
    * Creates a behavior that signs requests properly for the Azure Table Storage service.
@@ -61,15 +72,4 @@ public class OClientBehaviors {
       }
     };
   }
-  
-  /**
-   * Creates a behavior that does token authorization.
-   *
-   * @param OAuth Token
-   * @return a behavior that does http basic authentication
-   */
-  public static OClientBehavior oAuthBehavior(String oAuthToken) {
-    return new OAuthAuthenticationBehavior(oAuthToken);
-  }
-
 }

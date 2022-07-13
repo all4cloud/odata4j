@@ -49,7 +49,7 @@ public class ConsumerCountRequest implements OCountRequest {
     }
 	
 	if(filter != null) {
-	  uri = uri + "?&filter=" + filter;
+	  uri = uri + "?$filter=" + filter;
 	}
 
     ODataClientRequest request = ODataClientRequest.get(uri);

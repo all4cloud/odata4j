@@ -49,6 +49,7 @@ public class ConsumerCountRequest implements OCountRequest {
     }
 	
 	if(filter != null) {
+	  filter = filter.replaceAll(" ", "%20").replaceAll("'", "%27");
 	  uri = uri + "?$filter=" + filter;
 	}
 

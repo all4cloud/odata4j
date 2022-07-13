@@ -12,6 +12,7 @@ public class ConsumerCountRequest implements OCountRequest {
   private String baseUri;
   private String entitySetName;
   private Integer top;
+  private String filter;
 
   public ConsumerCountRequest(ODataClient client, String serviceRootUri) {
     this.client = client;
@@ -40,6 +41,10 @@ public class ConsumerCountRequest implements OCountRequest {
     if (top != null) {
       uri = uri + "?$top=" + top;
     }
+	
+	if(filter != null) {
+	  uri = uri + "?&filter=" + filter;
+	}
 
     ODataClientRequest request = ODataClientRequest.get(uri);
     String valueString = client.requestBody(client.getFormatType(), request);

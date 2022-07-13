@@ -22,6 +22,15 @@ public interface OCountRequest {
    * @return the count-request builder
    */
   OCountRequest top(int top);
+  
+    /**
+   * Sets a filter for the requested count
+   *
+   * @param filter  filter for entity
+   * @return the count-request builder
+   */
+  OCountRequest filter(String filter);
+
 
   /**
    * Sends the count-request to the OData service and returns the result.

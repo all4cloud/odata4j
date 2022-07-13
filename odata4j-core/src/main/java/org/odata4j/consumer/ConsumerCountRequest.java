@@ -28,6 +28,12 @@ public class ConsumerCountRequest implements OCountRequest {
     this.top = Integer.valueOf(top);
     return this;
   }
+  
+   public ConsumerCountRequest filter(String filter)
+   {
+     this.filter = filter;
+     return this;
+   }
 
   public int execute() throws ODataProducerException {
     String uri = baseUri;
@@ -50,5 +56,4 @@ public class ConsumerCountRequest implements OCountRequest {
     String valueString = client.requestBody(client.getFormatType(), request);
     return Integer.parseInt(valueString);
   }
-
 }

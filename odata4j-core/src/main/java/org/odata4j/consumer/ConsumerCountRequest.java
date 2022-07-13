@@ -29,11 +29,11 @@ public class ConsumerCountRequest implements OCountRequest {
     return this;
   }
   
-   public ConsumerCountRequest filter(String filter)
-   {
-     this.filter = filter;
-     return this;
-   }
+  public ConsumerCountRequest filter(String filter)
+  {
+    this.filter = filter;
+    return this;
+  }
 
   public int execute() throws ODataProducerException {
     String uri = baseUri;
